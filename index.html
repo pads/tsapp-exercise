@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>App Stub</title>
+        <link rel="stylesheet" type="text/css" href="/bags/common/tiddlers/normalize.css"/>
+    </head>
+    <body>    
+        <header>
+            <h1>TiddlySpace Operation Examples</h1>
+        </header>
+        <section>
+            <h1>Fetch Public Bag</h1>
+            <button id="fetch-public-bag">Fetch</button>
+            <button id="clear-public-bag">Clear</button>
+            <ul id="public-bag-output">
+            </ul>
+        </section>
+        <br>
+        <section>
+            <h1>Fetch Public Tiddler</h1>
+            <input id="fetch-tiddler-title" type="text" placeholder="tiddler title">
+            <label>Render</label><input id="render" type="checkbox">
+            <button id="fetch-public-tiddler">Fetch</button>
+            <button id="clear-public-tiddler">Clear</button>
+            <br>
+            <code id="public-tiddler-output"></code>
+            <h1>Create/Edit Public Tiddler</h1>
+            <input id="new-tiddler-title" type="text" placeholder="tiddler title">
+            <input id="new-tiddler-tags" type="text" placeholder="tags (space separated)">
+            <button id="create-tiddler">Create</button>
+            <br>
+            <textarea id="new-tiddler-text" rows="5" placeholder="tiddler text"></textarea>
+            <h1>Delete Public Tiddler</h1>
+            <input id="delete=tiddler-title" type="text" placeholder="tiddler title">
+            <button id="delete-tiddler">Delete</button>
+        </section>
+        <section>
+            <h1>Search Tiddlers</h1>
+            <input id="search-query" type="text" placeholder="search query">
+            <label>Render</label><input id="search-render" type="checkbox">
+            <button id="search">Search</button>
+            <button id="clear-search">Clear Search</button>
+            <br>
+        </section>
+        <br>
+        <footer>&copy; 2013 Osmosoft</footer>
+        <script type="text/javascript" src="/bags/common/tiddlers/jquery.js"></script>
+        <!--[if lt IE 8 ]>
+        <script type="text/javascript" src="/bags/common/tiddlers/json2.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="Status.js"></script>
+        <script type="text/javascript" src="Tiddler.js"></script>
+        <script type="text/javascript" src="Bag.js"></script>
+        <script type="text/javascript" src="UI.js"></script>
+    </body>
+</html>
