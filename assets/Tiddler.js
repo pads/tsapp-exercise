@@ -1,13 +1,13 @@
 var Tiddler = function(bag, title, onDoneFunction, onFailFunction, render) {
 
-    var options = '';
+    var parameters = {};
     if(render) {
-        options = '?render=1';
+        parameters.render = 1;
     }
 
     return {
         get: function() {
-            $.getJSON('/bags/' + bag + '/tiddlers/' + title + '.json' + options).done(onDoneFunction).fail(onFailFunction);
+            $.getJSON('/bags/' + bag + '/tiddlers/' + title + '.json', parameters).done(onDoneFunction).fail(onFailFunction);
         },
         put: function(data) {
             $.ajax({
