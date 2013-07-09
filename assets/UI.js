@@ -18,13 +18,15 @@ Status.get(function(status) {
                 $.each(tiddlers, function(index, tiddler) {
                     $publicBagOutput.append('<li>' + tiddler.title + '</li>');
                 });
-            }
+            },
+             null, isRadioButtonSelected('#render-bag'),
+            isRadioButtonSelected('#fat-bag')
         );
         bag.get();
     });
 
     $('#fetch-public-tiddler').click(function () {
-        var render = isRenderOptionChecked('#render-tiddler');
+        var render = isRadioButtonSelected('#render-tiddler');
 
         var tiddler = new Tiddler(public_bag, $('#fetch-tiddler-title').val(),
             function(data) {
@@ -43,7 +45,7 @@ Status.get(function(status) {
             $.each(results, function(index, tiddler) {
                 $searchOutput.append('<li>' + tiddler.title + '</li>');
             });
-        }, null, isRenderOptionChecked('#search-render'));
+        }, null, isRadioButtonSelected('#search-render'), isRadioButtonSelected('#search-fat'));
     });
 
     $('#clear-public-bag').click(function() {
@@ -57,12 +59,20 @@ Status.get(function(status) {
     $('#clear-search').click(function() {
         $searchOutput.empty();
     });
+
+    $('input[type="radio"]').change(function() {
+        if($(this).hasClass('1')) {
+            $('input.2').attr('checked', false);
+        } else {
+            $('input.1').attr('checked', false);
+        }
+    });
 });
 
-function isRenderOptionChecked(selector) {
-    var render = false;
+function isRadioButtonSelected(selector) {
+    var optionSelected = false;
     if($(selector).is(':checked')) {
-        render = true;
+        optionSelected = true;
     }
-    return render;
+    return optionSelected;
 }
