@@ -49,6 +49,14 @@ Status.get(function(status) {
         tiddler.put({ text: $('#new-tiddler-text').val(), tags: tags });
     });
 
+    $('#delete-tiddler').click(function() {
+
+        var tiddler = new Tiddler(public_bag, $('#delete-tiddler-title').val(), function() {
+            alert("tiddler deleted");
+        });
+        tiddler.delete();
+    });
+
     $('#search').click(function() {
         Search.query($('#search-query').val(), function(results) {
             $.each(results, function(index, tiddler) {
