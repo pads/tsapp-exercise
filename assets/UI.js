@@ -40,6 +40,15 @@ Status.get(function(status) {
         tiddler.get();
     });
 
+    $('#create-tiddler').click(function() {
+        var tags = $('#new-tiddler-tags').val().split(' ');
+
+        var tiddler = new Tiddler(public_bag, $('#new-tiddler-title').val(), function() {
+            alert("tiddler created");
+        });
+        tiddler.put({ text: $('#new-tiddler-text').val(), tags: tags });
+    });
+
     $('#search').click(function() {
         Search.query($('#search-query').val(), function(results) {
             $.each(results, function(index, tiddler) {
