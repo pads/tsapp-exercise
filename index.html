@@ -10,6 +10,7 @@
         </header>
         <section>
             <h1>Fetch Public Bag</h1>
+            <label>Render</label><input id="render-bag" type="checkbox">
             <button id="fetch-public-bag">Fetch</button>
             <button id="clear-public-bag">Clear</button>
             <ul id="public-bag-output">
@@ -19,7 +20,7 @@
         <section>
             <h1>Fetch Public Tiddler</h1>
             <input id="fetch-tiddler-title" type="text" placeholder="tiddler title">
-            <label>Render</label><input id="render" type="checkbox">
+            <label>Render</label><input id="render-tiddler" type="checkbox">
             <button id="fetch-public-tiddler">Fetch</button>
             <button id="clear-public-tiddler">Clear</button>
             <br>
@@ -41,6 +42,8 @@
             <button id="search">Search</button>
             <button id="clear-search">Clear Search</button>
             <br>
+            <ul id="search-output">
+            </ul>
         </section>
         <br>
         <footer>&copy; 2013 Osmosoft</footer>
@@ -51,6 +54,7 @@
         <script type="text/javascript" src="Status.js"></script>
         <script type="text/javascript" src="Tiddler.js"></script>
         <script type="text/javascript" src="Bag.js"></script>
+        <script type="text/javascript" src="Search.js"></script>
         <script type="text/javascript" src="UI.js"></script>
     </body>
 </html>

@@ -9,6 +9,7 @@ Status.get(function(status) {
     var public_bag = bagsPrefix + '_public';
     var $publicBagOutput = $('#public-bag-output');
     var $publicTiddlerOutput = $('#public-tiddler-output');
+    var $searchOutput = $('#search-output');
 
     $('#fetch-public-bag').click(function () {
 
@@ -23,11 +24,7 @@ Status.get(function(status) {
     });
 
     $('#fetch-public-tiddler').click(function () {
-
-        var render;
-        if($('#render').is(':checked')) {
-            render = true;
-        }
+        var render = isRenderOptionChecked('#render-tiddler');
 
         var tiddler = new Tiddler(public_bag, $('#fetch-tiddler-title').val(),
             function(data) {
@@ -41,6 +38,14 @@ Status.get(function(status) {
         tiddler.get();
     });
 
+    $('#search').click(function() {
+        Search.query($('#search-query').val(), function(results) {
+            $.each(results, function(index, tiddler) {
+                $searchOutput.append('<li>' + tiddler.title + '</li>');
+            });
+        }, null, isRenderOptionChecked('#search-render'));
+    });
+
     $('#clear-public-bag').click(function() {
         $publicBagOutput.empty();
     });
@@ -48,4 +53,16 @@ Status.get(function(status) {
     $('#clear-public-tiddler').click(function() {
         $publicTiddlerOutput.empty();
     });
+
+    $('#clear-search').click(function() {
+        $searchOutput.empty();
+    });
 });
+
+function isRenderOptionChecked(selector) {
+    var render = false;
+    if($(selector).is(':checked')) {
+        render = true;
+    }
+    return render;
+}
